@@ -1,0 +1,82 @@
+{
+  "sidebar": {
+    "title": "CIH BANK",
+    "subtitle": "Client Restrictions",
+    "saisie": "New Restriction",
+    "mes_saisies": "My Entries",
+    "dashboard": "Dashboard",
+    "recherche": "Global Search",
+    "audit": "Audit Logs",
+    "utilisateurs": "Users",
+    "logout": "Logout",
+    "language": "FR"
+  },
+  "form": {
+    "title": "New Restriction Entry",
+    "readonly": "Read-only mode (Viewer). You cannot submit this form.",
+    "account": "Account Number",
+    "type": "Restriction Type",
+    "type_gel": "Fund Freeze",
+    "type_blocage": "Card Block",
+    "reason": "Reason",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "save": "Save (Draft)",
+    "review": "Please review the information before final confirmation.",
+    "edit": "Edit",
+    "confirm": "Confirm",
+    "success_create": "Restriction confirmed and activated!",
+    "error_create": "Error creating restriction",
+    "error_confirm": "Error during confirmation"
+  },
+  "entries": {
+    "title": "My Entries",
+    "account": "Account",
+    "type": "Type",
+    "reason": "Reason",
+    "status": "Status",
+    "actions": "Actions",
+    "delete_confirm": "Are you sure you want to deactivate this restriction?",
+    "deactivate": "Deactivate",
+    "status_active": "ACTIVE",
+    "status_inactive": "INACTIVE",
+    "status_draft": "DRAFT"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "protected_accounts": "Protected Accounts",
+    "active_restrictions": "Active Restrictions",
+    "active_users": "Active Users",
+    "recent_activity": "Recent Activity",
+    "by_type": "Distribution by Type"
+  },
+  "search": {
+    "title": "Global Search",
+    "placeholder": "Search account or reason...",
+    "btn": "Search",
+    "edit": "Edit",
+    "deactivate": "Deactivate",
+    "account": "Account",
+    "type": "Type",
+    "reason": "Reason",
+    "status": "Status",
+    "actions": "Actions"
+  },
+  "audit": {
+    "title": "Audit Logs",
+    "action": "Action",
+    "user": "User",
+    "target": "Entity",
+    "date": "Date",
+    "before": "Before",
+    "after": "After"
+  },
+  "users": {
+    "title": "User Management",
+    "name": "Name",
+    "username": "Username",
+    "id": "Keycloak ID",
+    "role": "Local Role",
+    "actions": "Actions"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "sidebar": {
+    "title": "CIH BANK",
+    "subtitle": "Restrictions Clients",
+    "saisie": "Saisie Restriction",
+    "mes_saisies": "Mes Saisies",
+    "dashboard": "Dashboard",
+    "recherche": "Recherche Globale",
+    "audit": "Logs d'Audit",
+    "utilisateurs": "Utilisateurs",
+    "logout": "Déconnexion",
+    "language": "EN"
+  },
+  "form": {
+    "title": "Saisie d'une Restriction",
+    "readonly": "Mode lecture seule (Visualiseur). Vous ne pouvez pas soumettre ce formulaire.",
+    "account": "Numéro de Compte",
+    "type": "Type de Restriction",
+    "type_gel": "Gel de fonds",
+    "type_blocage": "Blocage de carte",
+    "reason": "Motif",
+    "startDate": "Date de début",
+    "endDate": "Date de fin",
+    "save": "Sauvegarder (Brouillon)",
+    "review": "Veuillez relire les informations avant confirmation définitive.",
+    "edit": "Modifier",
+    "confirm": "Confirmer",
+    "success_create": "Restriction confirmée et activée !",
+    "error_create": "Erreur lors de la création",
+    "error_confirm": "Erreur lors de la confirmation"
+  },
+  "entries": {
+    "title": "Mes Saisies",
+    "account": "Compte",
+    "type": "Type",
+    "reason": "Motif",
+    "status": "Statut",
+    "actions": "Actions",
+    "delete_confirm": "Êtes-vous sûr de vouloir désactiver cette restriction ?",
+    "deactivate": "Désactiver",
+    "status_active": "ACTIVE",
+    "status_inactive": "INACTIVE",
+    "status_draft": "BROUILLON"
+  },
+  "dashboard": {
+    "title": "Tableau de Bord",
+    "protected_accounts": "Comptes Protégés",
+    "active_restrictions": "Restrictions Actives",
+    "active_users": "Utilisateurs Actifs",
+    "recent_activity": "Activité Récente",
+    "by_type": "Répartition par Type"
+  },
+  "search": {
+    "title": "Recherche Globale",
+    "placeholder": "Rechercher un compte ou un motif...",
+    "btn": "Rechercher",
+    "edit": "Éditer",
+    "deactivate": "Désactiver",
+    "account": "Compte",
+    "type": "Type",
+    "reason": "Motif",
+    "status": "Statut",
+    "actions": "Actions"
+  },
+  "audit": {
+    "title": "Logs d'Audit",
+    "action": "Action",
+    "user": "Utilisateur",
+    "target": "Entité",
+    "date": "Date",
+    "before": "Avant",
+    "after": "Après"
+  },
+  "users": {
+    "title": "Gestion des Utilisateurs",
+    "name": "Nom",
+    "username": "Nom d'utilisateur",
+    "id": "Keycloak ID",
+    "role": "Rôle Local",
+    "actions": "Actions"
+  }
+}
