@@ -4,7 +4,6 @@ import com.bank.restrictions.entity.Alert;
 import com.bank.restrictions.entity.AlertStatus;
 import com.bank.restrictions.entity.RiskThirdParty;
 import com.bank.restrictions.repository.AlertRepository;
-import com.bank.restrictions.service.RestrictionService;
 import com.bank.restrictions.service.RiskThirdPartyService;
 import com.bank.restrictions.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +20,11 @@ import java.util.UUID;
 @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_VIEWER')")
 public class DashboardController {
 
-    private final RestrictionService restrictionService;
     private final UserService userService;
     private final RiskThirdPartyService riskThirdPartyService;
     private final AlertRepository alertRepository;
 
-    public DashboardController(RestrictionService restrictionService, UserService userService, RiskThirdPartyService riskThirdPartyService, AlertRepository alertRepository) {
-        this.restrictionService = restrictionService;
+    public DashboardController(UserService userService, RiskThirdPartyService riskThirdPartyService, AlertRepository alertRepository) {
         this.userService = userService;
         this.riskThirdPartyService = riskThirdPartyService;
         this.alertRepository = alertRepository;
@@ -36,8 +33,6 @@ public class DashboardController {
     @GetMapping("/stats")
     public ResponseEntity<Map<String, Long>> getStats() {
         Map<String, Long> stats = new HashMap<>();
-        stats.put("activeRestrictions", restrictionService.countActiveRestrictions());
-        stats.put("protectedAccounts", restrictionService.countProtectedAccounts());
         stats.put("activeUsers", userService.countUsers());
         return ResponseEntity.ok(stats);
     }
@@ -60,10 +55,10 @@ public class DashboardController {
             
             if ("TERMINATE".equalsIgnoreCase(action) && alert.getRelatedEntityId() != null) {
                 com.bank.restrictions.entity.AppUser user = userService.getOrCreateUserFromJwt(jwt);
-                riskThirdPartyService.terminateRelationship(alert.getRelatedEntityId(), user.getId());
+                riskThirdPartyService.terminateRelationship(alert.getRelatedEntityId(), user);
             } else if ("BLOCK".equalsIgnoreCase(action) && alert.getRelatedEntityId() != null) {
                 com.bank.restrictions.entity.AppUser user = userService.getOrCreateUserFromJwt(jwt);
-                riskThirdPartyService.toggleBlockRelationship(alert.getRelatedEntityId(), user.getId());
+                riskThirdPartyService.toggleBlockRelationship(alert.getRelatedEntityId(), user);
             }
 
             alertRepository.save(alert);

@@ -1,14 +1,12 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom'
-import { LayoutDashboard, FilePlus, List, Search, FileText, Users, Globe } from 'lucide-react'
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, Navigate } from 'react-router-dom'
+import { LayoutDashboard, FilePlus, FileText, Users, Globe } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import keycloak from './auth/keycloak'
-import EntryForm from './pages/EntryForm'
-import MyEntries from './pages/MyEntries'
 import Dashboard from './pages/Dashboard'
-import SearchAndFilter from './pages/SearchAndFilter'
 import AuditLogs from './pages/AuditLogs'
 import UserManagement from './pages/UserManagement'
+import RiskThirdPartyForm from './pages/RiskThirdPartyForm'
+import RiskThirdPartyList from './pages/RiskThirdPartyList'
 import cihLogo from './assets/cih-logo.png'
 import './App.css'
 
@@ -17,11 +15,10 @@ function Sidebar() {
   const { t, i18n } = useTranslation()
   
   const navItems = [
-    { path: '/', label: t('sidebar.saisie'), icon: <FilePlus size={20} /> },
-    { path: '/my-entries', label: t('sidebar.mes_saisies'), icon: <List size={20} /> },
-    { path: '/dashboard', label: t('sidebar.dashboard'), icon: <LayoutDashboard size={20} />, roles: ['ROLE_ADMIN', 'ROLE_VIEWER'] },
-    { path: '/search', label: t('sidebar.recherche'), icon: <Search size={20} />, roles: ['ROLE_ADMIN', 'ROLE_VIEWER'] },
-    { path: '/audit', label: t('sidebar.audit'), icon: <FileText size={20} />, roles: ['ROLE_ADMIN', 'ROLE_VIEWER'] },
+    { path: '/dashboard', label: t('sidebar.dashboard'), icon: <LayoutDashboard size={20} /> },
+    { path: '/ind-list', label: t('sidebar.ind_list'), icon: <FileText size={20} /> },
+    { path: '/ind-form', label: t('sidebar.ind_form'), icon: <FilePlus size={20} />, roles: ['ROLE_ADMIN', 'ROLE_IG', 'ROLE_CONFORMITE_SF', 'ROLE_CONFORMITE_PF', 'ROLE_JURIDIQUE'] },
+    { path: '/audit', label: t('sidebar.audit'), icon: <FileText size={20} /> },
     { path: '/users', label: t('sidebar.utilisateurs'), icon: <Users size={20} />, roles: ['ROLE_ADMIN'] },
   ]
 
@@ -39,7 +36,7 @@ function Sidebar() {
     <div className="sidebar">
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1rem' }}>
         <img src={cihLogo} alt="CIH BANK" style={{ width: '120px', marginBottom: '1rem' }} />
-        <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', fontWeight: '500' }}>{t('sidebar.subtitle')}</p>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', fontWeight: '500' }}>Tiers à Risques (IND)</p>
       </div>
       <div className="sidebar-nav">
         {navItems.filter(item => hasRole(item.roles)).map(item => (
@@ -75,12 +72,13 @@ function App() {
         <Sidebar />
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<EntryForm />} />
-            <Route path="/my-entries" element={<MyEntries />} />
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/search" element={<SearchAndFilter />} />
             <Route path="/audit" element={<AuditLogs />} />
             <Route path="/users" element={<UserManagement />} />
+            <Route path="/ind-form" element={<RiskThirdPartyForm />} />
+            <Route path="/ind-form/:id" element={<RiskThirdPartyForm />} />
+            <Route path="/ind-list" element={<RiskThirdPartyList />} />
           </Routes>
         </main>
       </div>

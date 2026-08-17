@@ -8,6 +8,8 @@
     "recherche": "Global Search",
     "audit": "Audit Logs",
     "utilisateurs": "Users",
+    "ind": "Risk Third-Parties",
+    "alerts": "System Alerts",
     "logout": "Logout",
     "language": "FR"
   },
@@ -78,5 +80,42 @@
     "id": "Keycloak ID",
     "role": "Local Role",
     "actions": "Actions"
+  },
+  "ind": {
+    "title": "Risk Third-Parties (IND)",
+    "form_title": "Risk Third-Party Declaration",
+    "is_client": "Is CIH Client?",
+    "identifier": "Client Identifier",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "cin": "National ID (CIN)",
+    "passport": "Passport",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "reason": "Declaration Reason",
+    "declaring_entity": "Declaring Entity",
+    "block_relationship": "Block Relationship (Auto Sitex)",
+    "save": "Submit Declaration",
+    "update": "Update",
+    "lift_status": "Lift Status",
+    "toggle_block": "Block/Unblock Relationship",
+    "history": "History",
+    "status_active": "ACTIVE",
+    "status_lifted": "LIFTED",
+    "status_terminated": "TERMINATED",
+    "success_create": "Risk third-party declared successfully.",
+    "success_update": "Third-party data updated.",
+    "success_lift": "Third-party status lifted successfully.",
+    "success_block": "Block status updated."
+  },
+  "alerts": {
+    "title": "Daily Alerts (Batch)",
+    "resolve": "Resolve",
+    "block_action": "Apply Block",
+    "terminate_action": "Terminate Relationship",
+    "status_pending": "PENDING",
+    "status_resolved": "RESOLVED",
+    "success_resolve": "Alert resolved successfully."
   }
 }

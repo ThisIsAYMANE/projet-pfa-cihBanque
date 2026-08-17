@@ -32,19 +32,18 @@ public class RiskAlertBatchJob {
 
         System.out.println("RiskAlertBatchJob started at " + LocalDateTime.now() + ". Scanning " + restrictedParties.size() + " INDs against today's operations.");
 
-        // Simulate logic:
-        // for (RiskThirdParty ind : restrictedParties) {
-        //     boolean hasSuspiciousOperation = operationService.hasOperationsToday(ind.getCin());
-        //     if (hasSuspiciousOperation) {
-        //         Alert alert = new Alert();
-        //         alert.setType(AlertType.POSITIVE_MATCH);
-        //         alert.setDescription("Match found in daily transactions for IND: " + ind.getCin());
-        //         alert.setRelatedEntityId(ind.getId());
-        //         alert.setStatus(AlertStatus.PENDING);
-        //         alert.setCreatedAt(LocalDateTime.now());
-        //         alertRepository.save(alert);
-        //     }
-        // }
+        for (RiskThirdParty ind : restrictedParties) {
+             boolean hasSuspiciousOperation = Math.random() > 0.8; // Simulated logic
+             if (hasSuspiciousOperation) {
+                 Alert alert = new Alert();
+                 alert.setType(AlertType.POSITIVE_MATCH);
+                 alert.setDescription("Match found in daily transactions for IND: " + ind.getIdentifier());
+                 alert.setRelatedEntityId(ind.getId());
+                 alert.setStatus(AlertStatus.PENDING);
+                 alert.setCreatedAt(LocalDateTime.now());
+                 alertRepository.save(alert);
+             }
+         }
 
         System.out.println("RiskAlertBatchJob completed at " + LocalDateTime.now());
     }

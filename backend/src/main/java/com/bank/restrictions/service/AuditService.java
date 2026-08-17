@@ -14,12 +14,14 @@ public class AuditService {
         this.auditLogRepository = auditLogRepository;
     }
 
-    public void logAction(String action, String entityType, UUID entityId, UUID performedBy, String beforeState, String afterState) {
+    public void logAction(String action, String entityType, UUID entityId, UUID performedBy, String performedByUsername, String entityIdentifier, String beforeState, String afterState) {
         AuditLog log = new AuditLog();
         log.setAction(action);
         log.setEntityType(entityType);
         log.setEntityId(entityId);
         log.setPerformedBy(performedBy);
+        log.setPerformedByUsername(performedByUsername);
+        log.setEntityIdentifier(entityIdentifier);
         log.setTimestamp(LocalDateTime.now());
         log.setBeforeState(beforeState);
         log.setAfterState(afterState);

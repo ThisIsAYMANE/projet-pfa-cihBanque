@@ -15,7 +15,10 @@ public class AuditLog {
     private String entityType;
     private UUID entityId;
     private UUID performedBy;
+    private String performedByUsername;
     private LocalDateTime timestamp;
+
+    private String entityIdentifier;
 
     @Column(columnDefinition = "nvarchar(max)")
     private String beforeState;
@@ -40,4 +43,8 @@ public class AuditLog {
     public void setBeforeState(String beforeState) { this.beforeState = beforeState; }
     public String getAfterState() { return afterState; }
     public void setAfterState(String afterState) { this.afterState = afterState; }
+    public String getPerformedByUsername() { return performedByUsername; }
+    public void setPerformedByUsername(String performedByUsername) { this.performedByUsername = performedByUsername; }
+    public String getEntityIdentifier() { return entityIdentifier; }
+    public void setEntityIdentifier(String entityIdentifier) { this.entityIdentifier = entityIdentifier; }
 }

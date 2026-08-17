@@ -1,13 +1,12 @@
 {
   "sidebar": {
     "title": "CIH BANK",
-    "subtitle": "Restrictions Clients",
-    "saisie": "Saisie Restriction",
-    "mes_saisies": "Mes Saisies",
-    "dashboard": "Dashboard",
-    "recherche": "Recherche Globale",
-    "audit": "Logs d'Audit",
-    "utilisateurs": "Utilisateurs",
+    "subtitle": "Gestion Tiers à Risques",
+    "dashboard": "Dashboard des alertes",
+    "ind_list": "Liste Tiers IND",
+    "ind_form": "Déclaration Tiers",
+    "audit": "Historiques",
+    "utilisateurs": "Habilitations",
     "logout": "Déconnexion",
     "language": "EN"
   },
@@ -78,5 +77,43 @@
     "id": "Keycloak ID",
     "role": "Rôle Local",
     "actions": "Actions"
+  },
+  "ind": {
+    "title": "Tiers à Risques (IND)",
+    "form_title": "Déclaration d'un Tiers à Risques",
+    "is_client": "Client CIH ?",
+    "identifier": "Identifiant Tiers",
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "cin": "CIN",
+    "passport": "Passeport",
+    "phone": "Téléphone",
+    "email": "Email",
+    "address": "Adresse",
+    "reason": "Motif de déclaration",
+    "restriction_type": "Type de restriction",
+    "declaring_entity": "Entité de déclaration",
+    "block_relationship": "Bloquer la relation (Sitex Automatique)",
+    "save": "Soumettre la déclaration",
+    "update": "Mettre à jour",
+    "lift_status": "Lever le statut (Levée)",
+    "toggle_block": "Bloquer/Débloquer la relation",
+    "history": "Historique",
+    "status_active": "ACTIF",
+    "status_lifted": "LEVÉE",
+    "status_terminated": "RÉSILIÉ",
+    "success_create": "Tiers déclaré avec succès.",
+    "success_update": "Données du tiers mises à jour.",
+    "success_lift": "Statut du tiers levé avec succès.",
+    "success_block": "Statut de blocage mis à jour."
+  },
+  "alerts": {
+    "title": "Alertes Quotidiennes (Batch)",
+    "resolve": "Résoudre",
+    "block_action": "Appliquer Blocage",
+    "terminate_action": "Résilier la Relation",
+    "status_pending": "EN ATTENTE",
+    "status_resolved": "RÉSOLUE",
+    "success_resolve": "Alerte résolue avec succès."
   }
 }

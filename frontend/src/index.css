@@ -96,6 +96,26 @@ body {
   cursor: not-allowed;
 }
 
+/* Icon Button */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+.btn-icon:hover {
+  background-color: var(--border-color);
+  color: var(--primary-color);
+}
+
 /* Layout */
 .app-container {
   display: flex;

@@ -13,10 +13,14 @@ public class RiskThirdParty {
     private UUID id;
 
     // Saisie identifiants Tiers (For clients)
+    @Column(nullable = false)
+    private String identifierType = "RADICAL"; // RIB, RADICAL, CIN
+
     private String identifier;
 
     // Rajout d’indicateur auto. Client CIH O/N
     @Column(nullable = false)
+    @com.fasterxml.jackson.annotation.JsonProperty("isCihClient")
     private boolean isCihClient;
 
     // Si non client : saisie des données Tiers
@@ -44,6 +48,9 @@ public class RiskThirdParty {
     @Column(nullable = false)
     private RiskThirdPartyStatus status = RiskThirdPartyStatus.ACTIVE;
 
+    @Column(nullable = false)
+    private String restrictionType = "BLOCK_ALL";
+
     // Audit fields
     private UUID createdBy;
     private LocalDateTime createdAt;
@@ -54,10 +61,16 @@ public class RiskThirdParty {
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
     
+    public String getIdentifierType() { return identifierType; }
+    public void setIdentifierType(String identifierType) { this.identifierType = identifierType; }
+
     public String getIdentifier() { return identifier; }
     public void setIdentifier(String identifier) { this.identifier = identifier; }
     
+    @com.fasterxml.jackson.annotation.JsonProperty("isCihClient")
     public boolean isCihClient() { return isCihClient; }
+    
+    @com.fasterxml.jackson.annotation.JsonProperty("isCihClient")
     public void setCihClient(boolean isCihClient) { this.isCihClient = isCihClient; }
 
     public String getFirstName() { return firstName; }
@@ -92,6 +105,9 @@ public class RiskThirdParty {
 
     public RiskThirdPartyStatus getStatus() { return status; }
     public void setStatus(RiskThirdPartyStatus status) { this.status = status; }
+
+    public String getRestrictionType() { return restrictionType; }
+    public void setRestrictionType(String restrictionType) { this.restrictionType = restrictionType; }
 
     public UUID getCreatedBy() { return createdBy; }
     public void setCreatedBy(UUID createdBy) { this.createdBy = createdBy; }

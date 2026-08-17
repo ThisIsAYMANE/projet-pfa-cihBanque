@@ -35,7 +35,7 @@ public class RiskThirdPartyController {
     @PreAuthorize("hasAnyRole('ROLE_IG', 'ROLE_CONFORMITE_SF', 'ROLE_CONFORMITE_PF', 'ROLE_JURIDIQUE')")
     public ResponseEntity<RiskThirdParty> createDeclaration(@RequestBody RiskThirdParty declaration, @AuthenticationPrincipal Jwt jwt) {
         AppUser user = userService.getOrCreateUserFromJwt(jwt);
-        return ResponseEntity.status(HttpStatus.CREATED).body(riskThirdPartyService.declareRiskThirdParty(declaration, user.getId()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(riskThirdPartyService.declareRiskThirdParty(declaration, user));
     }
 
     @PutMapping("/{id}")
@@ -43,7 +43,7 @@ public class RiskThirdPartyController {
     public ResponseEntity<RiskThirdParty> updateDeclaration(@PathVariable UUID id, @RequestBody RiskThirdParty newInfo, @AuthenticationPrincipal Jwt jwt) {
         try {
             AppUser user = userService.getOrCreateUserFromJwt(jwt);
-            return ResponseEntity.ok(riskThirdPartyService.updateRiskThirdParty(id, newInfo, user.getId()));
+            return ResponseEntity.ok(riskThirdPartyService.updateRiskThirdParty(id, newInfo, user));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();
         }
@@ -54,7 +54,7 @@ public class RiskThirdPartyController {
     public ResponseEntity<RiskThirdParty> liftStatus(@PathVariable UUID id, @AuthenticationPrincipal Jwt jwt) {
         try {
             AppUser user = userService.getOrCreateUserFromJwt(jwt);
-            return ResponseEntity.ok(riskThirdPartyService.liftRestrictionStatus(id, user.getId()));
+            return ResponseEntity.ok(riskThirdPartyService.liftRestrictionStatus(id, user));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();
         }
@@ -65,7 +65,7 @@ public class RiskThirdPartyController {
     public ResponseEntity<RiskThirdParty> toggleBlock(@PathVariable UUID id, @AuthenticationPrincipal Jwt jwt) {
         try {
             AppUser user = userService.getOrCreateUserFromJwt(jwt);
-            return ResponseEntity.ok(riskThirdPartyService.toggleBlockRelationship(id, user.getId()));
+            return ResponseEntity.ok(riskThirdPartyService.toggleBlockRelationship(id, user));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();
         }
@@ -75,6 +75,16 @@ public class RiskThirdPartyController {
     @PreAuthorize("hasAnyRole('ROLE_IG', 'ROLE_CONFORMITE_SF', 'ROLE_CONFORMITE_PF', 'ROLE_JURIDIQUE', 'ROLE_RESEAU_BPP', 'ROLE_RESEAU_BEI', 'ROLE_B0', 'ROLE_ENGAGEMENT', 'ROLE_RISQUE', 'ROLE_FCT_REGALIENNE')")
     public ResponseEntity<List<RiskThirdParty>> getAll() {
         return ResponseEntity.ok(riskThirdPartyService.getAllRiskThirdParties());
+    }
+
+    @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_IG', 'ROLE_CONFORMITE_SF', 'ROLE_CONFORMITE_PF', 'ROLE_JURIDIQUE', 'ROLE_RESEAU_BPP', 'ROLE_RESEAU_BEI', 'ROLE_B0', 'ROLE_ENGAGEMENT', 'ROLE_RISQUE', 'ROLE_FCT_REGALIENNE')")
+    public ResponseEntity<RiskThirdParty> getById(@PathVariable UUID id) {
+        try {
+            return ResponseEntity.ok(riskThirdPartyService.getRiskThirdPartyById(id));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/{id}/history")

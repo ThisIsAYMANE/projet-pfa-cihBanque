@@ -16,6 +16,7 @@ keycloak.init({ onLoad: 'login-required', checkLoginIframe: false }).then(authen
         await keycloak.updateToken(30); // Rafraîchit si le token expire dans moins de 30 secondes
         config.headers.Authorization = `Bearer ${keycloak.token}`;
       } catch (error) {
+        console.error(error);
         keycloak.login(); // Rediriger vers login si le rafraîchissement échoue (session expirée)
       }
       return config;
